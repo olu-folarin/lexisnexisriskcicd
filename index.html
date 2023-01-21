@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <title>Weight Converter</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="text"] {
+            width: 100px;
+            margin: 10px;
+            padding: 5px;
+        }
+
+        select {
+            margin: 10px;
+            padding: 5px;
+        }
+
+        button {
+            margin: 10px;
+            padding: 5px;
+            font-weight: bold;
+        }
+    </style>
+<head>
+    <body>
+        <div class="container">
+            <h1>Weight Converter</h1>
+            <form>
+                <label for="value">Value: </label>
+                <input type="text" id="value" name="value">
+                <br>
+                <label for="unit_in">Unit in: </label>
+                <select id="unit_in" name="unit_in">
+                    <option value="kg">kg</option>
+                    <option value="lb">lb</option>
+                    <option value="oz">oz</option>
+                </select>  
+                <br>
+                <label for="unit_out">Unit out: </label>
+                <select id="unit_out" name="unit_out">
+                    <option value="kg">kg</option>
+                    <option value="lb">lb</option>
+                    <option value="oz">oz</option>
+                </select>
+                <br><br>
+                <button type="button" onclick="convert()">Convert</button>
+            </form>
+            <div id="result"></div>
+        </div>
+        <script>
+            function convert() {
+                // get the input value, unit in and unit out
+                let value = document.getElementById("value").value;
+                let unit_in = document.getElementById("unit_in").value;
+                let unit_out = document.getElementById("unit_out").value;
+                let units = {
+                    'kg': 1.0,
+                    'lb': 0.453592,
+                    'oz': 0.0283495
+                }
+                // convert the weight
+                let result = value * units[unit_in]/units[unit_out];
+                // display the result
+                document.getElementById("result").innerHTML = "Result: " + result + " " + unit_out;
+            }
+        </script>
+    </body>
+</head>
+</html>
